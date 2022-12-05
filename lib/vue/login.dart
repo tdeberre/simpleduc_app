@@ -78,11 +78,13 @@ class _LoginPageState extends State<LoginPage> {
 
 //fonction appelée pour tenter de se connecter
 void tryCo(BuildContext context, String email, String password) async {
-  if (await Session.connection(email: email, password: password)) {
+  try {
+    await Session.connection(email: email, password: password);
+    await Session.getProfile();
     Navigator.pushReplacementNamed(context, '/home');
-  } else {
-    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-      content: Text('Echec de la connexion'),
+  } catch (e) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(e.toString()),
     ));
   }
 }

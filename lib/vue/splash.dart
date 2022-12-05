@@ -12,8 +12,7 @@ class SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 1),
-        () => Navigator.pushReplacementNamed(context, "/login"));
+    Timer(const Duration(seconds: 1), () => Navigator.pushReplacementNamed(context, "/login"));
   }
 
   @override
@@ -31,10 +30,13 @@ class SplashScreenState extends State<SplashScreen> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height,
-                      child: Icon(Icons.all_inclusive_outlined,
-                          size: MediaQuery.of(context).size.width / 4)),
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: Icon(
+                      Icons.all_inclusive_outlined,
+                      size: MediaQuery.of(context).size.width / 4,
+                    ),
+                  ),
                 ],
               ),
             ),

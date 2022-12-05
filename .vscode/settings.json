@@ -1,3 +1,9 @@
 {
-    "diffEditor.wordWrap": "off"
+    "diffEditor.wordWrap": "off",
+    "dart.lineLength": 120,
+    "[dart]": {
+        "editor.rulers": [
+            120
+        ],
+    }
 }

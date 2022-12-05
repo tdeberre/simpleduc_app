@@ -1,7 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:simpleduc_app/tools/api.dart';
 
+//menu principal
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.title});
 
@@ -17,32 +17,27 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
-          child: FutureBuilder(
-        future: Session.getProfile(),
-        builder: (context, snapshot) {
-          return snapshot.hasData
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [boutonsEnFonctionDuRole(context)])
-              : const Text("chargement");
-        },
-      )),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            boutonsEnFonctionDuRole(context),
+          ],
+        ),
+      ),
     );
   }
 }
 
-Future<Text> test() async {
-  await Future.delayed(const Duration(seconds: 3));
-  return const Text("data");
-}
-
+//renvoie une liste de bouton en fonction des fonctionalité disponible pour l'utilisateur
 boutonsEnFonctionDuRole(BuildContext context) {
   List<String> roles = Session.profile["roles"];
+  //le bouton profil est disponible pour tous
   List<Widget> list = [
     OutlinedButton(
         onPressed: () => Navigator.pushNamed(context, '/menu/profile'),
         child: const Text("profil")),
   ];
+  //bouton si rh
   if (roles.contains("rh")) {
     list += [
       const Padding(padding: EdgeInsets.all(10)),
@@ -52,6 +47,7 @@ boutonsEnFonctionDuRole(BuildContext context) {
       )
     ];
   }
+  //bouton si compta
   if (roles.contains("compta")) {
     list += [
       const Padding(padding: EdgeInsets.all(10)),
