@@ -23,14 +23,14 @@ class _ProfileState extends State<Profile> {
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.pushNamed(context, "/menu/profile/editer"),
         tooltip: "editer",
-        child: Icon(Icons.edit),
+        child: const Icon(Icons.edit),
       ),
     );
   }
 }
 
 profilePrinter(BuildContext context) {
-  Map<String, dynamic> profileMap = Session.getprofile();
+  Map<String, dynamic> profileMap = Session.profile;
   List<Widget> listkey = List.empty(growable: true);
   List<Widget> listvalue = List.empty(growable: true);
   profileMap.forEach((key, value) {
@@ -77,7 +77,7 @@ class _ProfileEditerState extends State<ProfileEditer> {
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("ProfileEditer")],
+        children: const [Text("ProfileEditer")],
       )),
     );
   }

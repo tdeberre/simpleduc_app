@@ -27,19 +27,21 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              //champ de saisie de l'email
               Container(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextFormField(
-                  decoration: const InputDecoration(labelText: "Login"),
+                  decoration: const InputDecoration(labelText: "email"),
                   validator: (valeur) {
                     if (valeur == null || valeur.isEmpty) {
-                      return 'Veuillez entrer votre login';
+                      return 'Veuillez entrer votre email';
                     } else {
                       login = valeur.toString();
                     }
                   },
                 ),
               ),
+              //champ de saisie du mot de passe
               Container(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextFormField(
@@ -54,12 +56,13 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
               ),
+              //bouton de validation
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: ElevatedButton(
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
-                      nonsens(context, login, password);
+                      tryCo(context, login, password);
                     }
                   },
                   child: const Text("Se connecter"),
@@ -73,10 +76,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 }
 
-void nonsens(BuildContext context, String login, String password) async {
-  if (true
-      //await Session.connection(login: login, password: password)
-      ) {
+//fonction appelée pour tenter de se connecter
+void tryCo(BuildContext context, String email, String password) async {
+  if (await Session.connection(email: email, password: password)) {
     Navigator.pushReplacementNamed(context, '/home');
   } else {
     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(

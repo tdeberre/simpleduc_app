@@ -34,11 +34,7 @@ class SplashScreenState extends State<SplashScreen> {
                       width: MediaQuery.of(context).size.width,
                       height: MediaQuery.of(context).size.height,
                       child: Icon(Icons.all_inclusive_outlined,
-                          size: MediaQuery.of(context).size.width / 4)
-
-                      // child: SpinKitPouringHourGlass(
-                      //     color: Colors.black, size: 150),
-                      ),
+                          size: MediaQuery.of(context).size.width / 4)),
                 ],
               ),
             ),

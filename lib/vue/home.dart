@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(title: Text(widget.title)),
       body: Center(
           child: FutureBuilder(
-        future: test(),
+        future: Session.getProfile(),
         builder: (context, snapshot) {
           return snapshot.hasData
               ? Column(
@@ -37,7 +37,7 @@ Future<Text> test() async {
 }
 
 boutonsEnFonctionDuRole(BuildContext context) {
-  List<String> roles = Session.getprofile()["roles"];
+  List<String> roles = Session.profile["roles"];
   List<Widget> list = [
     OutlinedButton(
         onPressed: () => Navigator.pushNamed(context, '/menu/profile'),
